@@ -8,6 +8,6 @@ namespace TowerDefence
 {
     internal abstract class Crystal : GameObject
     {
-        
+
     }
 }

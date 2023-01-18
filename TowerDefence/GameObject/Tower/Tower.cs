@@ -18,9 +18,9 @@ namespace TowerDefence
 
         public void Update()
         {
-            switch (currentCrystal) 
+            switch (currentCrystal)
             {
-                
+
             }
         }
     }
