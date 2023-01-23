@@ -13,12 +13,11 @@ namespace TowerDefence
         public NormalTower()
         {
             texture = Assets.normalTowerTex;
-            position = new Vector2(200, 200);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            spriteBatch.Draw(texture, hitbox, Color.White);
         }
     }
 }

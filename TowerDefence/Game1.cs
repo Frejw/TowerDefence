@@ -10,14 +10,9 @@ namespace TowerDefence
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        #region fortesting
-        Level level1;
-        NormalTower tower1;
-        #endregion
-
-        public static gameState currentGameState;
-
+        public gameplayManager gameplayManager;
         
+        public static gameState currentGameState;
 
         public enum gameState
         {
@@ -45,16 +40,13 @@ namespace TowerDefence
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
             Assets.LoadAssets(Content, GraphicsDevice);
 
-            #region fortesting
-            level1 = new Level();
-            tower1 = new NormalTower();
-            #endregion
-
+            gameplayManager = new gameplayManager(spriteBatch, GraphicsDevice);
             currentGameState = gameState.MainMenu;
         }
-
+        
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -70,6 +62,8 @@ namespace TowerDefence
 
 
                 case gameState.Playing:
+                    
+                    gameplayManager.Update();
                     
                     break;
 
@@ -100,11 +94,8 @@ namespace TowerDefence
 
 
                 case gameState.Playing:
-                    if (level1 != null)
-                    {
-                        level1.Draw(spriteBatch);
-                    }
-                    tower1.Draw(spriteBatch);
+                    gameplayManager.Draw(spriteBatch);
+                    
                     break;
 
 
@@ -120,6 +111,8 @@ namespace TowerDefence
 
             spriteBatch.End();
             base.Draw(gameTime);
+
+
         }
     }
 }
