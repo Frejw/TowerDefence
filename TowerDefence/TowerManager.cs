@@ -15,6 +15,7 @@ namespace TowerDefence
         static List<Tower> towerList= new List<Tower>();
         static bool hasUnPlacedTower = false;
 
+        public static List<Tower> TowerList { get { return towerList; } }
         public static bool HasUnPlacedTower { get { return hasUnPlacedTower; } }
 
         public static void Update()
@@ -29,20 +30,21 @@ namespace TowerDefence
                 }
             }
 
-            if (HasUnPlacedTower)
-            {
-                if (KeyMouseReader.KeyPressed(Keys.D2))
-                {
-                    foreach (Tower tower in towerList.Where(tower => !tower.Placed))
-                    {
-                        if (Tower.CanPlace(tower))
-                        {
-                            tower.Placed = true;
-                            Level.DrawOnRenderTarget(Assets.level01_background, tower.HitboxPosition);
-                        }
-                    }
-                }
-            }
+            //if (HasUnPlacedTower)
+            //{
+            //    if (KeyMouseReader.KeyPressed(Keys.D2))
+            //    {
+            //        foreach (Tower tower in towerList.Where(tower => !tower.Placed))
+            //        {
+                        
+            //            if (Tower.CanPlace(tower))
+            //            {
+            //                tower.Placed = true;
+            //                gameplayManager.level1.DrawRenderTarget(Assets.normalTowerTex, tower.HitboxPosition);
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         public static void Draw(SpriteBatch spriteBatch)

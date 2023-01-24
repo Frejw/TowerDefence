@@ -42,10 +42,10 @@ namespace TowerDefence
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            levelManager.Draw();
+            //levelManager.Draw();
             if (level1 != null)
             {
-                level1.Draw();
+                 level1.Draw();
             }
             TowerManager.Draw(spriteBatch);
         }
