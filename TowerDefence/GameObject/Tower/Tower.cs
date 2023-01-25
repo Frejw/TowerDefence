@@ -18,6 +18,15 @@ namespace TowerDefence
 
         bool placed = false;
 
+        protected Rectangle hitbox;
+        public Rectangle Hitbox { get { return hitbox; } }
+
+        public Vector2 HitboxPosition
+        {
+            get { return new Vector2(hitbox.X, hitbox.Y); }
+            set { hitbox.X = (int)value.X; hitbox.Y = (int)value.Y; }
+        }
+
         public bool Placed { get => placed; set => placed = value; }
 
 

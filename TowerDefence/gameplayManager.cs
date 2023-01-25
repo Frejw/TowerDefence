@@ -15,6 +15,7 @@ namespace TowerDefence
         LevelManager levelManager;
 
         #region fortesting
+        PoisonCrystal crystal1;
         public static Level level1;
         //NormalTower tower1;
         #endregion
@@ -28,6 +29,7 @@ namespace TowerDefence
 
             #region fortesting
             level1 = new Level(spriteBatch, graphics);
+            crystal1 = new PoisonCrystal();
             //tower1 = new NormalTower();
             //TowerManager.CreateTower(typeof(NormalTower));
             #endregion
@@ -47,6 +49,7 @@ namespace TowerDefence
             {
                  level1.Draw();
             }
+            crystal1.Draw(spriteBatch);
             TowerManager.Draw(spriteBatch);
         }
 

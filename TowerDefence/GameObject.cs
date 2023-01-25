@@ -13,17 +13,10 @@ namespace TowerDefence
     {
         protected Texture2D texture;
         //protected Vector2 position;
-        protected Rectangle hitbox;
+        
 
         public Texture2D Texture { get { return texture; } }
-        public Rectangle Hitbox { get { return hitbox; } }
-
-        //public Vector2 Position { get => position; set => position = value; }
-        public Vector2 HitboxPosition 
-        {
-            get { return new Vector2(hitbox.X, hitbox.Y); }
-            set { hitbox.X = (int)value.X; hitbox.Y = (int)value.Y; }
-        }
+        
         
 
         public GameObject()

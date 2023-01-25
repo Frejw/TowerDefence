@@ -17,6 +17,7 @@ namespace TowerDefence
     {
         public static Texture2D level01_background;
         public static Texture2D asphaltRoadTex1, asphaltRoadTex2, gravelRoadTex1, gravelRoadTex2;
+        public static Texture2D T1Crystal;
         public static Texture2D normalTowerTex, trapTex, AoETowerTex;
         public static Texture2D redTex;
 
@@ -34,6 +35,7 @@ namespace TowerDefence
             asphaltRoadTex2 = content.Load<Texture2D>("asphalt2");
             gravelRoadTex1 = content.Load<Texture2D>("gravel");
             gravelRoadTex2 = content.Load<Texture2D>("gravel2");
+            T1Crystal = content.Load<Texture2D>("Crystals/C1-test");
 
             redTex = new Texture2D(graphics, 1, 1, false, SurfaceFormat.Color);
             redTex.SetData<Color>(new Color[] { Color.Red });

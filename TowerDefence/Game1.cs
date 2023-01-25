@@ -111,8 +111,8 @@ namespace TowerDefence
 
             spriteBatch.End();
             base.Draw(gameTime);
-
-
         }
+
+        
     }
 }
