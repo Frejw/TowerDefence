@@ -22,8 +22,8 @@ namespace TowerDefence
             mousePosition.X = mouseState.X;
             mousePosition.Y = mouseState.Y;
 
-
             //this could be moved to TowerManager
+            //Creates new tower if there are no unplaced towers
             if (!TowerManager.HasUnPlacedTower)
             {
                 if (KeyMouseReader.KeyPressed(Keys.D1))
@@ -31,6 +31,7 @@ namespace TowerDefence
                     TowerManager.CreateTowerInstance(typeof(NormalTower));
                 }
             }
+            //else places unplaced tower
             else
             {
                 if (KeyMouseReader.KeyPressed(Keys.D1))
@@ -41,13 +42,30 @@ namespace TowerDefence
                         if (Tower.CanPlace(tower))
                         {
                             tower.Placed = true;
-                            gameplayManager.level1.DrawRenderTarget(Assets.normalTowerTex, tower.HitboxPosition);
+                            gameplayManager.level1.DrawRenderTarget(tower.Texture, tower.HitboxPosition);
                         }
                     }
                 }
             }
 
-            
+            //Creates new poison crystal
+            if (KeyMouseReader.KeyPressed(Keys.D2))
+            {
+                CrystalManager.CreateCrystal(typeof(PoisonCrystal));
+            }
+
+            //Drag&Drop Crystals
+            foreach (Crystal crystal in CrystalManager.CrystalList)
+            {
+                if (crystal.Hitbox.Contains(MousePosition))
+                {
+                    if (mouseState.LeftButton == ButtonState.Pressed)
+                    {
+                        //crystal.hitbox to mouse.position
+                        //change to if leftmouse down, get clicked object, set clicked object to object
+                    }
+                }
+            }
             
         }
     }

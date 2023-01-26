@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace TowerDefence
 
         public PoisonCrystal()
         {
+            texture = Assets.T1Crystal;
             hitbox = new Rectangle(300, 100, 40, 40);
         }
 

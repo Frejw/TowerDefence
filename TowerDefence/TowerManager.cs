@@ -62,7 +62,6 @@ namespace TowerDefence
         public static void CreateTowerInstance(Type tower)
         {
             towerList.Add((Tower)Activator.CreateInstance(tower));
-
         }
 
         #endregion
