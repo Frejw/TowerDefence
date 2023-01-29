@@ -13,6 +13,8 @@ namespace TowerDefence
         static MouseState mouseState;
         static Vector2 mousePosition;
 
+        static Crystal heldObject;
+
         public static MouseState MouseState { get { return mouseState; } }
         public static Vector2 MousePosition { get { return mousePosition; } }
 
@@ -54,18 +56,39 @@ namespace TowerDefence
                 CrystalManager.CreateCrystal(typeof(PoisonCrystal));
             }
 
-            //Drag&Drop Crystals
-            foreach (Crystal crystal in CrystalManager.CrystalList)
+            if (KeyMouseReader.LeftClick())
             {
-                if (crystal.Hitbox.Contains(MousePosition))
+                foreach (Crystal crystal in CrystalManager.CrystalList)
                 {
-                    if (mouseState.LeftButton == ButtonState.Pressed)
+                    if (crystal.Hitbox.Contains(MousePosition))
                     {
-                        //crystal.hitbox to mouse.position
-                        //change to if leftmouse down, get clicked object, set clicked object to object
+                        heldObject = crystal;
                     }
                 }
             }
+            
+            if (heldObject != null)
+            {
+                heldObject.HitboxPosition = mousePosition;
+
+                if (mouseState.LeftButton == ButtonState.Released)
+                {
+                    heldObject = null;
+                }
+            }
+
+            //Drag&Drop Crystals
+            //foreach (Crystal crystal in CrystalManager.CrystalList)
+            //{
+            //    if (crystal.Hitbox.Contains(MousePosition))
+            //    {
+            //        if (mouseState.LeftButton == ButtonState.Pressed)
+            //        {
+            //            //crystal.hitbox to mouse.position
+            //            //change to if leftmouse down, get clicked object, set clicked object to object
+            //        }
+            //    }
+            //}
             
         }
     }

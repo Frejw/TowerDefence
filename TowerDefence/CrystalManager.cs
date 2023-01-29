@@ -13,6 +13,14 @@ namespace TowerDefence
 
         public static List<Crystal> CrystalList { get { return crystalList; } }
 
+        public static void Update()
+        {
+            foreach (Crystal crystal in crystalList)
+            {
+                crystal.Update();
+            }
+        }
+
         public static void Draw(SpriteBatch spriteBatch)
         {
             foreach (Crystal crystal in crystalList)

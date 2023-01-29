@@ -63,7 +63,7 @@ namespace TowerDefence
 
                 case gameState.Playing:
                     
-                    gameplayManager.Update();
+                    gameplayManager.Update(gameTime);
                     
                     break;
 

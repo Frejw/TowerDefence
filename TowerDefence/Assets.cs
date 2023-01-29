@@ -22,7 +22,6 @@ namespace TowerDefence
         public static Texture2D redTex;
 
         public static SpriteFont fontArial;
-        
 
         //public static SimplePath enemyPath;
         //public static CatmullRomPath enemyPath;

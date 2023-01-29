@@ -23,8 +23,7 @@ namespace TowerDefence
             set { hitbox.X = (int)value.X; hitbox.Y = (int)value.Y; }
         }
 
-
-
+        public abstract void Update();
 
     }
 }
