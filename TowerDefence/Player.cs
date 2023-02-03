@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct2D1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace TowerDefence
 {
     public static class Player
     {
+        static int health = 100;
+
         static MouseState mouseState;
         static Vector2 mousePosition;
 
@@ -17,6 +20,8 @@ namespace TowerDefence
 
         public static MouseState MouseState { get { return mouseState; } }
         public static Vector2 MousePosition { get { return mousePosition; } }
+
+        public static int Health { get { return health; } set { health = value; } }
 
         public static void Update() 
         {
@@ -69,6 +74,8 @@ namespace TowerDefence
             
             if (heldObject != null)
             {
+                mousePosition.X -= heldObject.Texture.Width / 2;
+                mousePosition.Y -= heldObject.Texture.Height / 2;
                 heldObject.HitboxPosition = mousePosition;
 
                 if (mouseState.LeftButton == ButtonState.Released)

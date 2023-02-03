@@ -41,6 +41,9 @@ namespace TowerDefence
             ParticleEmitter emitter1 = new ParticleEmitter(ParticleEmitter.emitterType.Pulse);
             ParticleEmitterList.Add(emitter1);
 
+            //Enemy enemy1 = new NormalEnemy();
+            EnemyManager.CreateEnemy(typeof(NormalEnemy));
+
             //tower1 = new NormalTower();
             //TowerManager.CreateTower(typeof(NormalTower));
             #endregion
@@ -52,10 +55,15 @@ namespace TowerDefence
             CrystalManager.Update();
             TowerManager.Update();
             Player.Update();
+            EnemyManager.Update(gameTime);
             foreach (ParticleEmitter emitter in ParticleEmitterList)
             {
                 emitter.Update(gameTime);
             }
+
+            //print FPS
+            if ((int)(gameTime.TotalGameTime.TotalMilliseconds) % 1000 == 0)
+                System.Diagnostics.Debug.WriteLine((int)(1.0f / gameTime.ElapsedGameTime.TotalSeconds) + " fps");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -73,6 +81,7 @@ namespace TowerDefence
 
             CrystalManager.Draw(spriteBatch);
             TowerManager.Draw(spriteBatch);
+            EnemyManager.Draw(spriteBatch);
         }
 
         

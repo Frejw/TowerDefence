@@ -20,7 +20,7 @@ namespace TowerDefence
 
         CatmullRomPath enemyPath;
         
-
+        public CatmullRomPath EnemyPath { get { return enemyPath; } }
 
         //public RenderTarget2D RenderTarget { get { return renderTarget; } }
 

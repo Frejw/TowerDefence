@@ -19,7 +19,7 @@ namespace TowerDefence
         public PoisonCrystal()
         {
             texture = Assets.T1Crystal;
-            hitbox = new Rectangle(300, 100, 40, 40);
+            hitbox = new Rectangle(300, 100, 30, 30);
             emitter = new ParticleEmitter(ParticleEmitter.emitterType.Stream);
             gameplayManager.ParticleEmitterList.Add(emitter);
         }
