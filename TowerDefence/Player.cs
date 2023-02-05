@@ -74,8 +74,8 @@ namespace TowerDefence
             
             if (heldObject != null)
             {
-                mousePosition.X -= heldObject.Texture.Width / 2;
-                mousePosition.Y -= heldObject.Texture.Height / 2;
+                mousePosition.X -= heldObject.Hitbox.Width / 2;
+                mousePosition.Y -= heldObject.Hitbox.Height / 2;
                 heldObject.HitboxPosition = mousePosition;
 
                 if (mouseState.LeftButton == ButtonState.Released)

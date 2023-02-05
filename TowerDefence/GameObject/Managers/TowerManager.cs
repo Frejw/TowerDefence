@@ -27,7 +27,7 @@ namespace TowerDefence
                 if (!tower.Placed)
                 {
                     //probably suboptimal way of setting the offset
-                    Vector2 mouseOffset = new Vector2(tower.Texture.Width / 2, tower.Texture.Height / 2);
+                    Vector2 mouseOffset = new Vector2(tower.Hitbox.Width / 2, tower.Hitbox.Height / 2);
                     tower.HitboxPosition = Player.MousePosition - mouseOffset;
                 }
             }
