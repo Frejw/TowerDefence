@@ -31,17 +31,9 @@ namespace TowerDefence
 
             //this could be moved to TowerManager
             //Creates new tower if there are no unplaced towers
-            if (!TowerManager.HasUnPlacedTower)
+            if (TowerManager.HasUnPlacedTower)
             {
-                if (KeyMouseReader.KeyPressed(Keys.D1))
-                {
-                    TowerManager.CreateTowerInstance(typeof(NormalTower));
-                }
-            }
-            //else places unplaced tower
-            else
-            {
-                if (KeyMouseReader.KeyPressed(Keys.D1))
+                if (KeyMouseReader.LeftClick())
                 {
                     foreach (Tower tower in TowerManager.TowerList.Where(tower => !tower.Placed))
                     {
@@ -54,6 +46,30 @@ namespace TowerDefence
                     }
                 }
             }
+
+            //if (!TowerManager.HasUnPlacedTower)
+            //{
+            //    if (KeyMouseReader.KeyPressed(Keys.D1))
+            //    {
+            //        TowerManager.CreateTowerInstance(typeof(NormalTower));
+            //    }
+            //}
+            ////else places unplaced tower
+            //else
+            //{
+            //    if (KeyMouseReader.KeyPressed(Keys.D1))
+            //    {
+            //        foreach (Tower tower in TowerManager.TowerList.Where(tower => !tower.Placed))
+            //        {
+
+            //            if (Tower.CanPlace(tower))
+            //            {
+            //                tower.Placed = true;
+            //                gameplayManager.level1.DrawRenderTarget(tower.Texture, tower.HitboxPosition);
+            //            }
+            //        }
+            //    }
+            //}
 
             //Creates new poison crystal
             if (KeyMouseReader.KeyPressed(Keys.D2))

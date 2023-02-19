@@ -28,6 +28,7 @@ namespace TowerDefence
         //public static CatmullRomPath enemyPath;
 
         public static RenderTarget2D renderTarget;
+        public static RenderTarget2D UITarget;
 
         public static void LoadAssets(ContentManager content, GraphicsDevice graphics)
         {
@@ -50,6 +51,8 @@ namespace TowerDefence
             //enemyPath = new SimplePath(graphics);
             
             renderTarget = new RenderTarget2D(graphics, graphics.Viewport.Bounds.Width, graphics.Viewport.Bounds.Height);
+            //renderTarget = new RenderTarget2D(graphics, graphics.Viewport.Bounds.Width - 300, graphics.Viewport.Bounds.Height);
+            UITarget = new RenderTarget2D(graphics, graphics.Viewport.Bounds.Width, graphics.Viewport.Bounds.Height);
 
         }
 

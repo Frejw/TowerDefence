@@ -31,7 +31,7 @@ namespace TowerDefence
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Assets.T1Crystal, Hitbox, color);
+            spriteBatch.Draw(texture, hitbox, null, Color.Lime, 0f, Vector2.Zero, SpriteEffects.None, 0.2f);
         }
     }
 }

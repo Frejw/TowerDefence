@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Myra;
+using Myra.Graphics2D.UI;
 
 namespace TowerDefence
 {
@@ -17,10 +19,14 @@ namespace TowerDefence
 
         private static List<ParticleEmitter> particleEmitterList;
 
+        //UI gameUI;
+
+        public static Desktop desktop;
+
         #region fortesting
 
         public static Level level1;
-
+        
         internal static List<ParticleEmitter> ParticleEmitterList { get => particleEmitterList; set => particleEmitterList = value; }
 
         //NormalTower tower1;
@@ -34,6 +40,11 @@ namespace TowerDefence
             levelManager = new LevelManager(spriteBatch, graphics);
 
             ParticleEmitterList = new List<ParticleEmitter>();
+
+            //gameUI= new UI();
+
+            desktop = new Desktop();
+            desktop.Root = UI.CreateGrid(graphics);
             
             #region fortesting
             level1 = new Level(spriteBatch, graphics);
@@ -68,10 +79,17 @@ namespace TowerDefence
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            //Layers:
+            //1f = background
+            //0.9f = rendertarget with path and towers
+            //0.8f = UI rendertarget
+            //0.3f = non rendertarget tower
+            //0.2f = crystal
+
             //levelManager.Draw();
             if (level1 != null)
             {
-                 level1.Draw();
+                level1.Draw();
             }
 
             foreach (ParticleEmitter emitter in ParticleEmitterList)
@@ -82,8 +100,23 @@ namespace TowerDefence
             CrystalManager.Draw(spriteBatch);
             TowerManager.Draw(spriteBatch);
             EnemyManager.Draw(spriteBatch);
+
+            DrawUI();
+            
+            spriteBatch.Draw(Assets.UITarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0.8f);
         }
 
-        
+        #region methods
+
+        void DrawUI()
+        {
+            graphics.SetRenderTarget(Assets.UITarget);
+            graphics.Clear(Color.Transparent);
+
+            desktop.Render();
+            graphics.SetRenderTarget(null);
+        }
+
+        #endregion
     }
 }

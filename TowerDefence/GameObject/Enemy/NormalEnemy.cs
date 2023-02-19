@@ -29,6 +29,7 @@ namespace TowerDefence
             {
                 //this is for code when you get to the end of the path
                 Player.Health -= damage;
+                curveCurPos= 0.0f;
             }
 
             position = gameplayManager.level1.EnemyPath.EvaluateAt(curveCurPos);

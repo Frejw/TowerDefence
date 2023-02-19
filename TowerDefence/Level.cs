@@ -61,19 +61,19 @@ namespace TowerDefence
         public void Draw()
         {
             //draw on z-level 0
-            spriteBatch.Draw(Assets.level01_background, Vector2.Zero, Color.White);
-
-            spriteBatch.Draw(renderTarget, Vector2.Zero, Color.White);
+            spriteBatch.Draw(Assets.level01_background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(renderTarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero,1f,SpriteEffects.None,0.9f);
         }
 
         //Draws a texture to a possiton on the rendertarget if a texture is passed
         //Re-draws all towers in towerlist and the enemypath to rendertarget every time something is added to rendertarget
-        //Probably a really bad idaea doing it this way, should rewrite
+        //Probably a really bad idea doing it this way, should rewrite
         public void DrawRenderTarget(Texture2D texture, Vector2? position)
         {
             graphics.SetRenderTarget(renderTarget);
             graphics.Clear(Color.Transparent);
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Matrix.Identity);
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Matrix.Identity);
+            spriteBatch.Begin();
 
             DrawPath();
 
@@ -107,7 +107,7 @@ namespace TowerDefence
             enemyPath.DrawFillSetup(graphics, 2, 1, 256);
             enemyPath.DrawFill(graphics, Assets.redTex);
             //draw path points
-            enemyPath.DrawPoints(spriteBatch, Color.Black, 6);
+            //enemyPath.DrawPoints(spriteBatch, Color.Black, 6);
             //graphics.SetRenderTarget(null);
         }
 

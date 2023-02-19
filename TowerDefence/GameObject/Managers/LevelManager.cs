@@ -10,7 +10,7 @@ namespace TowerDefence
 {
     internal class LevelManager
     {
-        Level currentLevel;
+        //Level currentLevel;
         
 
         //public Level Level { get { return level1; } }
@@ -21,7 +21,7 @@ namespace TowerDefence
         }
         public void Draw()
         {
-            
+            gameplayManager.level1.Draw();
         }
     }
 }

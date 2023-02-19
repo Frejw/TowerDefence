@@ -1,16 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Drawing.Text;
+using Myra;
+using Myra.Graphics2D.UI;
 
 namespace TowerDefence
 {
     public class Game1 : Game
     {
+        //create a "gamewindow" that is as big as the "game" screen, excluding UI, then render UI outside of that screen to fix draw order issues
+        //path points will need to be changed
+        //limit placement of things to only be on gamescreen
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
         public gameplayManager gameplayManager;
+
+        //static Rectangle viewport;
+
+        //public static Rectangle Viewport { get { return viewport; } }
         
         public static gameState currentGameState;
 
@@ -31,18 +40,22 @@ namespace TowerDefence
 
         protected override void Initialize()
         {
-            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferWidth = 1560;
             graphics.PreferredBackBufferHeight = 960;
             graphics.ApplyChanges();
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            //viewport = new Rectangle(0, 0, graphics.PreferredBackBufferWidth - 250, graphics.PreferredBackBufferHeight - 100);
 
+            MyraEnvironment.Game = this;
             Assets.LoadAssets(Content, GraphicsDevice);
-
+            //UI.LoadContent();
+            
             gameplayManager = new gameplayManager(spriteBatch, GraphicsDevice);
             currentGameState = gameState.MainMenu;
         }
@@ -62,9 +75,7 @@ namespace TowerDefence
 
 
                 case gameState.Playing:
-                    
                     gameplayManager.Update(gameTime);
-                    
                     break;
 
 
@@ -84,7 +95,7 @@ namespace TowerDefence
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront);
 
             switch (currentGameState)
             {
@@ -95,7 +106,6 @@ namespace TowerDefence
 
                 case gameState.Playing:
                     gameplayManager.Draw(spriteBatch);
-                    
                     break;
 
 
