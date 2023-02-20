@@ -13,7 +13,9 @@ namespace TowerDefence
     {
         int poisonDamage;
         int poisonDuration;
-        Color color = Color.LimeGreen;
+        static Color color = Color.LimeGreen;
+
+        public static Color Color { get { return color; } }
 
         ParticleEmitter emitter;
         public PoisonCrystal()

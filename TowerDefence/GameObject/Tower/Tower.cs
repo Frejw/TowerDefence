@@ -50,12 +50,12 @@ namespace TowerDefence
         #region methods
 
         //returns true if the tower is within the backgrounds transparent part
-        public static bool CanPlace(Tower tower)
+        public static bool CanPlace(Tower tower, RenderTarget2D renderTarget)
         {
             Color[] pixels = new Color[tower.texture.Width * tower.texture.Height];
             Color[] pixels2 = new Color[tower.texture.Width * tower.texture.Height];
             tower.texture.GetData<Color>(pixels2);
-            gameplayManager.level1.renderTarget.GetData(0, tower.hitbox, pixels, 0, pixels.Length);
+            renderTarget.GetData(0, tower.hitbox, pixels, 0, pixels.Length);
             for (int i = 0; i < pixels.Length; i++)
             {
                 if (pixels[i].A > 0.0f && pixels2[i].A > 0.0f)

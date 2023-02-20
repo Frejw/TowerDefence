@@ -38,10 +38,14 @@ namespace TowerDefence
                     foreach (Tower tower in TowerManager.TowerList.Where(tower => !tower.Placed))
                     {
 
-                        if (Tower.CanPlace(tower))
+                        if (Tower.CanPlace(tower, gameplayManager.level1.renderTarget))
                         {
-                            tower.Placed = true;
-                            gameplayManager.level1.DrawRenderTarget(tower.Texture, tower.HitboxPosition);
+                            if (Tower.CanPlace(tower, Assets.UITarget))
+                            {
+                                tower.Placed = true;
+                                gameplayManager.level1.DrawRenderTarget(tower.Texture, tower.HitboxPosition);
+                            }
+                            
                         }
                     }
                 }

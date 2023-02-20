@@ -62,6 +62,38 @@ namespace TowerDefence
             }
             panel.Widgets.Add(panelGrid);
 
+            var crystalPicker = new ComboBox
+            {
+                GridColumn = 1,
+                GridRow = 9
+            };
+            //these items should be created using a list of crystal types, but that doesn't exist yet
+            crystalPicker.Items.Add(new ListItem("Poison", PoisonCrystal.Color));
+            crystalPicker.Items.Add(new ListItem("Type2", Color.Aqua));
+            crystalPicker.SelectedItem = crystalPicker.Items[0];
+            panelGrid.Widgets.Add(crystalPicker);
+
+            var crystalCreateButton = new TextButton();
+            crystalCreateButton.GridColumn = 2;
+            crystalCreateButton.GridRow = 9;
+            crystalCreateButton.Text = "Create";
+
+            crystalCreateButton.TouchDown += (s, a) =>
+            {
+                switch (crystalPicker.SelectedItem.Text)
+                {
+                    case "Poison":
+                        CrystalManager.CreateCrystal(typeof(PoisonCrystal));
+                        break;
+
+                    default:
+                        throw new NotImplementedException();
+                }
+                
+            };
+
+            panelGrid.Widgets.Add(crystalCreateButton);
+
             var tower1Button = new TextButton();
             tower1Button.HorizontalAlignment = HorizontalAlignment.Center;
             tower1Button.VerticalAlignment = VerticalAlignment.Center;
