@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct2D1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ namespace TowerDefence
 {
     internal abstract class Tower : GameObject
     {
-        Crystal currentCrystal;
+        protected Crystal currentCrystal;
+        protected Enemy target;
 
+        protected float shootTimer;
         int towerWidth = 40;
         int towerHeight = 40;
 
@@ -28,6 +31,7 @@ namespace TowerDefence
         }
 
         public bool Placed { get => placed; set => placed = value; }
+        public Crystal CurrentCrystal { get => currentCrystal; set => currentCrystal = value; }
 
 
         public Tower()
@@ -36,16 +40,7 @@ namespace TowerDefence
             hitbox = new Rectangle((int)Player.MousePosition.X, (int)Player.MousePosition.Y, towerWidth, towerHeight);
         }
 
-        public void Update()
-        {
-            //hitbox.X = (int)position.X;
-            //hitbox.Y = (int)position.Y;
-            
-            switch (currentCrystal)
-            {
-
-            }
-        }
+        public abstract void Update(GameTime gameTime);
 
         #region methods
 
@@ -66,6 +61,8 @@ namespace TowerDefence
             }
             return true;
         }
+
+        public abstract void Shoot();
 
         #endregion
     }

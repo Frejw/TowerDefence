@@ -18,12 +18,21 @@ namespace TowerDefence
         public static List<Tower> TowerList { get { return towerList; } }
         public static bool HasUnPlacedTower { get { return hasUnPlacedTower; } }
 
-        public static void Update()
+        public static void Update(GameTime gameTime)
         {
             hasUnPlacedTower = towerList.Any(t => t.Placed == false) ? true : false;
 
             foreach (Tower tower in towerList)
             {
+                tower.Update(gameTime);
+
+
+
+
+
+
+
+
                 if (!tower.Placed)
                 {
                     //probably suboptimal way of setting the offset

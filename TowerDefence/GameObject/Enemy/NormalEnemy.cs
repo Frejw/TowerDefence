@@ -12,13 +12,18 @@ namespace TowerDefence
 {
     internal class NormalEnemy : Enemy
     {
-        float curveCurPos = 0;
+        //float curveCurPos = 0;
         Vector2 position;
+
+        //public float CurveCurPos { get { return curveCurPos; } }
+
         public NormalEnemy()
         {
             texture = Assets.normalEnemyTex;
             hitbox = new Rectangle(0,0,texture.Width,texture.Height);
             speed = 0.01f;
+            health = 20;
+            killValue = 10;
         }
 
         public override void Update(GameTime gameTime)
@@ -41,6 +46,12 @@ namespace TowerDefence
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, hitbox, Color.White);
+            spriteBatch.DrawString(Assets.fontArial, health.ToString(), new Vector2(hitbox.X + 40, hitbox.Y), Color.LightBlue);
+        }
+
+        public override void TakeDamage(float damage)
+        {
+            health -= damage;
         }
     }
 }

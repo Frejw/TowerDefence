@@ -25,7 +25,8 @@ namespace TowerDefence
         public enum emitterType
         {
             Pulse,
-            Stream
+            Stream,
+            OnCall
         }
 
         public Vector2 Position { get => position; set => position = value; }
@@ -86,6 +87,10 @@ namespace TowerDefence
                         particleList.Add(new Particle(position, direction));
                     }
                     break;
+
+                case emitterType.OnCall:
+                    AddParticles();
+                    break;
             }
         }
 
@@ -102,6 +107,16 @@ namespace TowerDefence
             angle = (float)random.NextDouble() * MathHelper.TwoPi; // generates an angle between 0 and 2*Pi (360 degrees)
             direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)); // creates a vector with the x and y components equal to the cos and sin of the angle
             direction.Normalize(); // normalizes vector to have a magnitude of 1
+        }
+
+        //might not work as intended, copilot autocomplete
+        private void AddParticles()
+        {
+            for (int i = 0; i < density; i++)
+            {
+                GetDirection();
+                particleList.Add(new Particle(position, direction));
+            }
         }
     }
 }

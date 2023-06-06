@@ -64,9 +64,10 @@ namespace TowerDefence
         public void Update(GameTime gameTime)
         {
             CrystalManager.Update();
-            TowerManager.Update();
+            TowerManager.Update(gameTime);
             Player.Update();
             EnemyManager.Update(gameTime);
+            BulletManager.Update(gameTime);
             foreach (ParticleEmitter emitter in ParticleEmitterList)
             {
                 emitter.Update(gameTime);
@@ -100,6 +101,8 @@ namespace TowerDefence
             CrystalManager.Draw(spriteBatch);
             TowerManager.Draw(spriteBatch);
             EnemyManager.Draw(spriteBatch);
+            BulletManager.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
 
             DrawUI();
             

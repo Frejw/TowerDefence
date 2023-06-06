@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace TowerDefence
 {
@@ -15,9 +14,51 @@ namespace TowerDefence
             texture = Assets.normalTowerTex;
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            //set target that is in range and furthest along the path as the target
+            if (currentCrystal != null)
+            {
+                float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                shootTimer += deltaTime;
+
+                target = EnemyManager.EnemyList.Where(enemy => enemy.Hitbox.Intersects(currentCrystal.Range)).OrderByDescending(enemy => enemy.CurveCurPos).FirstOrDefault();
+                
+
+                if (target != null)
+                {
+                    if (shootTimer >= currentCrystal.FireRate)
+                    {
+                        Shoot();
+                        shootTimer = 0;
+                    }
+                }
+                
+                //foreach (Enemy enemy in EnemyManager.EnemyList)
+                //{
+                //    if (enemy.Hitbox.Intersects(currentCrystal.Range))
+                //    {
+                        
+                //    }
+
+                //}
+            }
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, hitbox, null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0.3f );
+            if (currentCrystal != null)
+            {
+                spriteBatch.DrawString(Assets.fontArial, currentCrystal.ToString(), HitboxPosition + new Vector2(50,0), Color.Red, 0f, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
+                spriteBatch.DrawString(Assets.fontArial, shootTimer.ToString(), HitboxPosition + new Vector2(50,15), Color.Red, 0f, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
+            }
+
+        }
+
+        public override void Shoot()
+        {
+            BulletManager.CreateBullet(HitboxPosition.X, HitboxPosition.Y, target, currentCrystal.Damage);
         }
     }
 }

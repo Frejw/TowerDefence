@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SharpDX.Direct2D1;
+//using SharpDX.Direct2D1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace TowerDefence
     public static class Player
     {
         static int health = 100;
+        static int money = 300;
 
         static MouseState mouseState;
         static Vector2 mousePosition;
@@ -22,6 +24,7 @@ namespace TowerDefence
         public static Vector2 MousePosition { get { return mousePosition; } }
 
         public static int Health { get { return health; } set { health = value; } }
+        public static int Money { get { return money; } set { money = value; } }
 
         public static void Update() 
         {
@@ -88,6 +91,14 @@ namespace TowerDefence
                     if (crystal.Hitbox.Contains(MousePosition))
                     {
                         heldObject = crystal;
+                        heldObject.InTower = false;
+                        foreach (Tower tower in TowerManager.TowerList)
+                        {
+                            if (tower.CurrentCrystal == heldObject)
+                            {
+                                tower.CurrentCrystal = null;
+                            }
+                        }
                     }
                 }
             }
@@ -100,6 +111,15 @@ namespace TowerDefence
 
                 if (mouseState.LeftButton == ButtonState.Released)
                 {
+                    foreach (Tower tower in TowerManager.TowerList)
+                    {
+                        if (heldObject.Hitbox.Intersects(tower.Hitbox))
+                        {
+                            tower.CurrentCrystal = heldObject;
+                            heldObject.HitboxPosition = tower.HitboxPosition;
+                            heldObject.InTower = true;
+                        }
+                    }
                     heldObject = null;
                 }
             }
@@ -117,6 +137,12 @@ namespace TowerDefence
             //    }
             //}
             
+        }
+
+        public static void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(Assets.fontArial, "Health: " + Health, new Vector2(1300, 20), Color.Red);
+            spriteBatch.DrawString(Assets.fontArial, "Money: " + Money, new Vector2(1300, 40), Color.Red);
         }
     }
 }

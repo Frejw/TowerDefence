@@ -62,6 +62,22 @@ namespace TowerDefence
             }
             panel.Widgets.Add(panelGrid);
 
+            //var playerHealth = new Label
+            //{
+            //    GridColumn = 0,
+            //    GridRow = 0,
+            //    Text = "Health: " + Player.Health
+            //};
+            //panelGrid.Widgets.Add(playerHealth);
+
+            //var playerMoney = new Label
+            //{
+            //    GridColumn = 0,
+            //    GridRow = 1,
+            //    Text = "$: " + Player.Money
+            //};
+            //panelGrid.Widgets.Add(playerMoney);
+
             var crystalPicker = new ComboBox
             {
                 GridColumn = 1,
@@ -99,7 +115,7 @@ namespace TowerDefence
             tower1Button.VerticalAlignment = VerticalAlignment.Center;
             tower1Button.GridColumn = 1;
             tower1Button.GridRow = 10;
-            tower1Button.Text = "Tower1";
+            tower1Button.Text = "Normal Tower";
             tower1Button.Width = 50;
             tower1Button.Height = 50;
             tower1Button.Toggleable = false;
@@ -125,11 +141,25 @@ namespace TowerDefence
             tower2Button.VerticalAlignment = VerticalAlignment.Center;
             tower2Button.GridColumn = 2;
             tower2Button.GridRow = 10;
-            tower2Button.Text = "Tower2";
+            tower2Button.Text = "AoE Tower";
             tower2Button.Width = 50;
             tower2Button.Height = 50;
             panelGrid.Widgets.Add(tower2Button);
 
+            tower2Button.TouchDown += (s, a) =>
+            {
+                if (!TowerManager.HasUnPlacedTower)
+                {
+                    TowerManager.CreateTowerInstance(typeof(AoeTower));
+                }
+                else
+                {
+                    foreach (Tower tower in TowerManager.TowerList.Where(tower => !tower.Placed).ToList())
+                    {
+                        TowerManager.TowerList.Remove(tower);
+                    }
+                }
+            };
             
             //var helloWorld = new Label
             //{
@@ -181,6 +211,16 @@ namespace TowerDefence
             grid.Widgets.Add(panel);
 
             return grid;
+        }
+
+        private static void Tower2Button_TouchDown1(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void Tower2Button_TouchDown(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private static void Tower1Button_TouchDown(object sender, EventArgs e)

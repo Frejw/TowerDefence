@@ -13,12 +13,21 @@ namespace TowerDefence
     {
         static List<Enemy> enemyList = new List<Enemy>();
 
+        public static List<Enemy> EnemyList { get { return enemyList; } }
+
         public static void Update(GameTime gameTime)
         {
-            foreach (Enemy enemy in enemyList)
+            for (int i = 0; i < enemyList.Count; i++)
             {
-                enemy.Update(gameTime);
+                enemyList[i].Update(gameTime);
+
+                if (enemyList[i].Health <= 0)
+                {
+                    Player.Money += enemyList[i].KillValue;
+                    enemyList.RemoveAt(i);
+                }
             }
+            
         }
 
         public static void Draw(SpriteBatch spriteBatch)
