@@ -90,27 +90,66 @@ namespace TowerDefence
             //}
 
 
-            for (int i = 0; i < enemyList.Count; i++)
+            //for (int i = 0; i < enemyList.Count; i++)
+            //{
+            //    enemyList[i].Update(gameTime);
+
+            //    enemyList[i].CurveCurPos += enemyList[i].Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+
+
+            //    if (enemyList[i].Health <= 0)
+            //    {
+            //        Player.Money += enemyList[i].KillValue;
+            //        enemyList.RemoveAt(i);
+            //    }
+
+            //    if (enemyList[i].CurveCurPos >= 1)
+            //    {
+            //        Player.Health -= enemyList[i].Damage;
+            //        enemyList.RemoveAt(i);
+            //    }
+            //}
+
+            //foreach (Enemy enemy in enemyList)
+            //{
+            //    enemy.Update(gameTime);
+
+            //    enemy.CurveCurPos += enemy.Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            //    if (enemy.Health <= 0)
+            //    {
+            //        Player.Money += enemy.KillValue;
+            //        enemyList.Remove(enemy);
+            //    }
+
+            //    if (enemy.CurveCurPos >= 1)
+            //    {
+            //        Player.Health -= enemy.Damage;
+            //        enemyList.Remove(enemy);
+            //    }
+            //}
+
+            for (int i = enemyList.Count - 1; i >= 0; i--)
             {
-                enemyList[i].Update(gameTime);
+                Enemy enemy = enemyList[i];
+                enemy.Update(gameTime);
 
-                enemyList[i].CurveCurPos += enemyList[i].Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                enemy.CurveCurPos += enemy.Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-
-
-                if (enemyList[i].Health <= 0)
+                if (enemy.Health <= 0)
                 {
-                    Player.Money += enemyList[i].KillValue;
+                    Player.Money += enemy.KillValue;
                     enemyList.RemoveAt(i);
                 }
 
-                if (enemyList[i].CurveCurPos >= 1)
+                if (enemy.CurveCurPos >= 1)
                 {
-                    Player.Health -= enemyList[i].Damage;
+                    Player.Health -= enemy.Damage;
                     enemyList.RemoveAt(i);
                 }
             }
-            
+
         }
 
         public static void Draw(SpriteBatch spriteBatch)

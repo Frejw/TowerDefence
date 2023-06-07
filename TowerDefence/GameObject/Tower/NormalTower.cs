@@ -13,6 +13,7 @@ namespace TowerDefence
         {
             texture = Assets.normalTowerTex;
             cost = 150;
+            rangeMultiplier = 1;
         }
 
         public override void Update(GameTime gameTime)
@@ -23,7 +24,7 @@ namespace TowerDefence
                 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 shootTimer += deltaTime;
 
-                target = EnemyManager.EnemyList.Where(enemy => enemy.Hitbox.Intersects(currentCrystal.Range)).OrderByDescending(enemy => enemy.CurveCurPos).FirstOrDefault();
+                target = EnemyManager.EnemyList.Where(enemy => enemy.Hitbox.Intersects(currentCrystal.RangeCircle)).OrderByDescending(enemy => enemy.CurveCurPos).FirstOrDefault();
                 
 
                 if (target != null)
@@ -59,7 +60,7 @@ namespace TowerDefence
 
         public override void Shoot()
         {
-            BulletManager.CreateBullet(HitboxPosition.X, HitboxPosition.Y, target, currentCrystal.Damage);
+            BulletManager.CreateBullet(HitboxPosition.X, HitboxPosition.Y, target, currentCrystal.Damage, currentCrystal.CrystalColor);
         }
     }
 }

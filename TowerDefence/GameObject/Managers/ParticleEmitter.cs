@@ -14,6 +14,13 @@ namespace TowerDefence
         float timeSinceLastSpawn;
         float spawnInterval;
         float angle;
+        float particleAge = 1;
+        float particleVelocity = 50;
+
+        bool shouldEmit;
+        public bool ShouldEmit { get => shouldEmit; set => shouldEmit = value; }
+        public float ParticleAge { get => particleAge; set => particleAge = value; }
+        public float ParticleVelocity { get => particleVelocity; set => particleVelocity = value; }
 
         List<Particle> particleList = new List<Particle>();
 
@@ -33,7 +40,7 @@ namespace TowerDefence
 
         public ParticleEmitter(emitterType currentEmitterType)
         {
-            density = 100;
+            density = 99;
             position = new Vector2(200,200);
             this.currentEmitterType = currentEmitterType;
 
@@ -74,7 +81,7 @@ namespace TowerDefence
                         for (int i = 0; i < density; i++)
                         {
                             GetDirection();
-                            particleList.Add(new Particle(position, direction));
+                            particleList.Add(new Particle(position, direction, particleAge, particleVelocity));
                         }
                     }
                     break;
@@ -84,12 +91,15 @@ namespace TowerDefence
                     {
                         timeSinceLastSpawn = 0;
                         GetDirection();
-                        particleList.Add(new Particle(position, direction));
+                        particleList.Add(new Particle(position, direction, particleAge, particleVelocity));
                     }
                     break;
 
                 case emitterType.OnCall:
-                    AddParticles();
+                    if (shouldEmit)
+                    {
+                        AddParticles();
+                    }
                     break;
             }
         }
@@ -115,7 +125,8 @@ namespace TowerDefence
             for (int i = 0; i < density; i++)
             {
                 GetDirection();
-                particleList.Add(new Particle(position, direction));
+                particleList.Add(new Particle(position, direction, particleAge, particleVelocity));
+                shouldEmit = false;
             }
         }
     }

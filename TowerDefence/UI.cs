@@ -95,7 +95,7 @@ namespace TowerDefence
                 GridRow = 9
             };
             //these items should be created using a list of crystal types, but that doesn't exist yet
-            crystalPicker.Items.Add(new ListItem("Poison", PoisonCrystal.Color));
+            crystalPicker.Items.Add(new ListItem("Poison", PoisonCrystal.color));
             crystalPicker.Items.Add(new ListItem("Type2", Color.Aqua));
             crystalPicker.SelectedItem = crystalPicker.Items[0];
             panelGrid.Widgets.Add(crystalPicker);

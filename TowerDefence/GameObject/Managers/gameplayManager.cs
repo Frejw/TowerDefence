@@ -49,8 +49,8 @@ namespace TowerDefence
             #region fortesting
             level1 = new Level(spriteBatch, graphics);
 
-            ParticleEmitter emitter1 = new ParticleEmitter(ParticleEmitter.emitterType.Pulse);
-            ParticleEmitterList.Add(emitter1);
+            //ParticleEmitter emitter1 = new ParticleEmitter(ParticleEmitter.emitterType.Pulse);
+            //ParticleEmitterList.Add(emitter1);
 
             //Enemy enemy1 = new NormalEnemy();
             //EnemyManager.CreateEnemy(typeof(NormalEnemy));

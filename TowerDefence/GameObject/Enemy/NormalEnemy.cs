@@ -19,9 +19,10 @@ namespace TowerDefence
 
         public NormalEnemy()
         {
-            texture = Assets.normalEnemyTex;
-            hitbox = new Rectangle(0,0,texture.Width,texture.Height);
+            texture = Assets.redTex;
+            hitbox = new Rectangle(0,0,30,30);
             speed = 0.01f;
+            armor = 0;
             maxHealth = 20;
             health = maxHealth;
             killValue = 20;
@@ -47,9 +48,9 @@ namespace TowerDefence
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            float healthBarFillWidth = (float)health / maxHealth * texture.Width;
-            spriteBatch.Draw(Assets.blackTex, new Rectangle(hitbox.X, hitbox.Y - 5, texture.Width, 5), Color.White);
-            spriteBatch.Draw(Assets.redTex, new Rectangle(hitbox.X, hitbox.Y - 5, (int)healthBarFillWidth, 5), Color.White);
+            float healthBarFillWidth = (float)health / maxHealth * hitbox.Width;
+            //spriteBatch.Draw(Assets.blackTex, new Rectangle(hitbox.X, hitbox.Y - 5, texture.Width, 5), Color.White);
+            spriteBatch.Draw(Assets.redTex, new Rectangle(hitbox.X, hitbox.Y - 10, (int)healthBarFillWidth, 5), Color.White);
 
             spriteBatch.Draw(texture, hitbox, Color.White);
             spriteBatch.DrawString(Assets.fontArial, health.ToString(), new Vector2(hitbox.X + 40, hitbox.Y), Color.LightBlue);
@@ -60,7 +61,7 @@ namespace TowerDefence
 
         public override void TakeDamage(float damage)
         {
-            health -= damage;
+            health -= damage * (1 - armor / 100);
         }
     }
 }

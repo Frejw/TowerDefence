@@ -17,6 +17,8 @@ namespace TowerDefence
 
         public gameplayManager gameplayManager;
 
+        Controls menuControls;
+
         //static Rectangle viewport;
 
         //public static Rectangle Viewport { get { return viewport; } }
@@ -43,6 +45,9 @@ namespace TowerDefence
             graphics.PreferredBackBufferWidth = 1560;
             graphics.PreferredBackBufferHeight = 960;
             graphics.ApplyChanges();
+
+            menuControls = new Controls(this);
+            //this.Components.Add(new Controls(this));
 
             base.Initialize();
         }
@@ -71,11 +76,19 @@ namespace TowerDefence
             {
                 case gameState.MainMenu:
                     MainMenu.Update();
+                    if (!this.Components.Contains(menuControls))
+                    {
+                        this.Components.Add(menuControls);
+                    }
                     break;
 
 
                 case gameState.Playing:
                     gameplayManager.Update(gameTime);
+                    if (this.Components.Contains(menuControls))
+                    {
+                        this.Components.Remove(menuControls);
+                    }
                     break;
 
 

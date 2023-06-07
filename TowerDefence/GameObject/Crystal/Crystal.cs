@@ -15,6 +15,7 @@ namespace TowerDefence
         protected int minDmg;
         protected int maxDmg;
         protected float fireRate;
+        protected Color crystalColor;
 
         public float Damage
         {
@@ -22,24 +23,31 @@ namespace TowerDefence
         }
         public float FireRate { get { return fireRate; } }
 
+        protected float defaultRangeRadius;
         protected float rangeRadius;
+
+        public float DefaultRangeRadius { get { return defaultRangeRadius; } }
+        public float RangeRadius { get { return rangeRadius; } set { rangeRadius = value; } }
 
         protected bool inTower;
 
         public bool InTower { get { return inTower; } set { inTower = value; } }
+
+        public Color CrystalColor { get { return crystalColor; } }
 
         //change to circle
         protected Rectangle hitbox;
         public Rectangle Hitbox { get { return hitbox; } }
         public Vector2 HitboxPosition
         {
-            get { return new Vector2(hitbox.X, hitbox.Y); }
-            set { hitbox.X = (int)value.X; hitbox.Y = (int)value.Y; }
+            get { return new Vector2(hitbox.X + hitbox.Width/2, hitbox.Y + hitbox.Height/2); }
+            set { hitbox.X = (int)value.X - hitbox.Width/2; hitbox.Y = (int)value.Y - hitbox.Height/2; }
         }
 
         protected Point center;
         protected CircleF range;
-        public CircleF Range { get { return range; } }
+        public CircleF RangeCircle { get { return range; } set { range = value; } }
+        public float RangeCircleRad { get { return range.Radius; } set { range.Radius = value; } }
 
         public abstract void Update();
 

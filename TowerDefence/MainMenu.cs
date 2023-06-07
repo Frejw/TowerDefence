@@ -11,6 +11,7 @@ namespace TowerDefence
 {
     internal static class MainMenu
     {
+        
         public static void Update()
         {
             if (KeyMouseReader.KeyPressed(Keys.Space))

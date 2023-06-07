@@ -12,11 +12,12 @@ namespace TowerDefence
     {
         public FastEnemy()
         {
-            texture = Assets.normalEnemyTex;
-            hitbox = new Rectangle(0, 0, texture.Width, texture.Height);
-            speed = 0.05f;
+            texture = Assets.greenTex;
+            hitbox = new Rectangle(0, 0, 30, 30);
+            speed = 0.02f;
             maxHealth = 10;
             health = maxHealth;
+            armor = 0;
             killValue = 10;
             damage = 5;
         }
@@ -32,8 +33,8 @@ namespace TowerDefence
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            float healthBarFillWidth = (float)health / maxHealth * texture.Width;
-            spriteBatch.Draw(Assets.blackTex, new Rectangle(hitbox.X, hitbox.Y - 5, texture.Width, 5), Color.White);
+            float healthBarFillWidth = (float)health / maxHealth * hitbox.Width;
+            //spriteBatch.Draw(Assets.blackTex, new Rectangle(hitbox.X, hitbox.Y - 5, texture.Width, 5), Color.White);
             spriteBatch.Draw(Assets.redTex, new Rectangle(hitbox.X, hitbox.Y - 5, (int)healthBarFillWidth, 5), Color.White);
 
             spriteBatch.Draw(texture, hitbox, Color.Blue);
@@ -44,7 +45,7 @@ namespace TowerDefence
 
         public override void TakeDamage(float damage)
         {
-            health -= damage;
+            health -= damage * (1 - armor/100);
         }
     }
 }

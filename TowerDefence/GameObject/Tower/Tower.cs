@@ -19,11 +19,13 @@ namespace TowerDefence
         int towerWidth = 40;
         int towerHeight = 40;
 
+        protected float rangeMultiplier;
         protected int cost;
 
         bool placed = false;
 
         protected Rectangle hitbox;
+        public float RangeMultiplier { get { return rangeMultiplier; } }
         public Rectangle Hitbox { get { return hitbox; } }
         public int Cost { get { return cost; } }
 

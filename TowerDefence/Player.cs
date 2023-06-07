@@ -13,7 +13,7 @@ namespace TowerDefence
     public static class Player
     {
         static int health = 100;
-        static int money = 300;
+        static int money = 1000;
 
         static MouseState mouseState;
         static Vector2 mousePosition;
@@ -32,7 +32,11 @@ namespace TowerDefence
             mousePosition.X = mouseState.X;
             mousePosition.Y = mouseState.Y;
 
-            //this could be moved to TowerManager
+            if (health <= 0)
+            {
+                Game1.currentGameState = Game1.gameState.EndScreen;
+            }
+
             //Creates new tower if there are no unplaced towers
             if (TowerManager.HasUnPlacedTower)
             {
@@ -82,10 +86,10 @@ namespace TowerDefence
             //}
 
             //Creates new poison crystal
-            if (KeyMouseReader.KeyPressed(Keys.D2))
-            {
-                CrystalManager.CreateCrystal(typeof(PoisonCrystal));
-            }
+            //if (KeyMouseReader.KeyPressed(Keys.D2))
+            //{
+            //    CrystalManager.CreateCrystal(typeof(PoisonCrystal));
+            //}
 
             if (KeyMouseReader.LeftClick())
             {
@@ -99,6 +103,7 @@ namespace TowerDefence
                         {
                             if (tower.CurrentCrystal == heldObject)
                             {
+                                tower.CurrentCrystal.RangeRadius = tower.CurrentCrystal.DefaultRangeRadius;
                                 tower.CurrentCrystal = null;
                             }
                         }
@@ -108,8 +113,8 @@ namespace TowerDefence
             
             if (heldObject != null)
             {
-                mousePosition.X -= heldObject.Hitbox.Width / 2;
-                mousePosition.Y -= heldObject.Hitbox.Height / 2;
+                //mousePosition.X -= heldObject.Hitbox.Width / 2;
+                //mousePosition.Y -= heldObject.Hitbox.Height / 2;
                 heldObject.HitboxPosition = mousePosition;
 
                 if (mouseState.LeftButton == ButtonState.Released)
@@ -119,7 +124,9 @@ namespace TowerDefence
                         if (heldObject.Hitbox.Intersects(tower.Hitbox))
                         {
                             tower.CurrentCrystal = heldObject;
-                            heldObject.HitboxPosition = tower.HitboxPosition;
+                            tower.CurrentCrystal.RangeRadius *= tower.RangeMultiplier;
+                            tower.CurrentCrystal.RangeCircleRad = tower.CurrentCrystal.RangeRadius;
+                            heldObject.HitboxPosition = tower.HitboxPosition + new Vector2(tower.Hitbox.Width/2, tower.Hitbox.Height/2);
                             heldObject.InTower = true;
                         }
                     }

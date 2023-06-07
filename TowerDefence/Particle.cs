@@ -25,12 +25,13 @@ namespace TowerDefence
         public Vector2 Position { get=> position; set => position = value; }
         public Vector2 Direction { get=> direction; set => direction = value; }
 
-        public Particle(Vector2 position, Vector2 direction)
+        public Particle(Vector2 position, Vector2 direction, float particleAge, float particleVelocity)
         {
             this.position = position;
             this.direction = direction;
-            velocity = 50;
+            velocity = particleVelocity;
             box = new Rectangle((int)position.X,(int)position.Y,width,height);
+            lifeTime = particleAge;
         }
 
         public void Update(GameTime gameTime)
