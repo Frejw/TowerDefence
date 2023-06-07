@@ -19,10 +19,13 @@ namespace TowerDefence
         int towerWidth = 40;
         int towerHeight = 40;
 
+        protected int cost;
+
         bool placed = false;
 
         protected Rectangle hitbox;
         public Rectangle Hitbox { get { return hitbox; } }
+        public int Cost { get { return cost; } }
 
         public Vector2 HitboxPosition
         {

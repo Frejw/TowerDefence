@@ -53,7 +53,7 @@ namespace TowerDefence
             ParticleEmitterList.Add(emitter1);
 
             //Enemy enemy1 = new NormalEnemy();
-            EnemyManager.CreateEnemy(typeof(NormalEnemy));
+            //EnemyManager.CreateEnemy(typeof(NormalEnemy));
 
             //tower1 = new NormalTower();
             //TowerManager.CreateTower(typeof(NormalTower));

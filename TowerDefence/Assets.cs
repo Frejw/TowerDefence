@@ -20,7 +20,7 @@ namespace TowerDefence
         public static Texture2D T1Crystal, T2Crystal, T3Crystal;
         public static Texture2D normalTowerTex, trapTex, AoETowerTex;
         public static Texture2D normalEnemyTex, fastEnemyTex;
-        public static Texture2D redTex;
+        public static Texture2D redTex, blackTex, greenTex;
 
         public static SpriteFont fontArial;
 
@@ -41,6 +41,12 @@ namespace TowerDefence
 
             redTex = new Texture2D(graphics, 1, 1, false, SurfaceFormat.Color);
             redTex.SetData<Color>(new Color[] { Color.Red });
+
+            blackTex = new Texture2D(graphics, 1, 1, false, SurfaceFormat.Color);
+            blackTex.SetData<Color>(new Color[] { Color.Black });
+
+            greenTex = new Texture2D(graphics, 1, 1, false, SurfaceFormat.Color);
+            greenTex.SetData<Color>(new Color[] { Color.Green });
 
             level01_background = content.Load<Texture2D>("grassBG");
 

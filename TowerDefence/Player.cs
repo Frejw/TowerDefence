@@ -45,10 +45,13 @@ namespace TowerDefence
                         {
                             if (Tower.CanPlace(tower, Assets.UITarget))
                             {
-                                tower.Placed = true;
-                                gameplayManager.level1.DrawRenderTarget(tower.Texture, tower.HitboxPosition);
+                                if (money >= tower.Cost)
+                                {
+                                    tower.Placed = true;
+                                    money -= tower.Cost;
+                                    gameplayManager.level1.DrawRenderTarget(tower.Texture, tower.HitboxPosition);
+                                }
                             }
-                            
                         }
                     }
                 }

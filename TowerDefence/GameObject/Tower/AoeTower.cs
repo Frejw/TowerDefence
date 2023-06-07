@@ -13,6 +13,7 @@ namespace TowerDefence
         public AoeTower()
         {
             texture = Assets.normalTowerTex;
+            cost = 250;
         }
 
         public override void Update(GameTime gameTime)

@@ -21,18 +21,39 @@ namespace TowerDefence
             {
                 bulletList[i].Update(gameTime);
 
-                if (bulletList[i].Target == null)
+                //if (bulletList[i].Target == null)
+                //{
+                //    bulletList.RemoveAt(i);
+                //}
+
+                if (!EnemyManager.EnemyList.Contains(bulletList[i].Target))
                 {
                     bulletList.RemoveAt(i);
                 }
 
-                for (int j = 0; j < EnemyManager.EnemyList.Count; j++)
+                //for (int j = 0; j < EnemyManager.EnemyList.Count; j++)
+                //{
+                //    if (bulletList[i].Hitbox.Intersects(EnemyManager.EnemyList[j].Hitbox))
+                //    {
+                //        EnemyManager.EnemyList[j].TakeDamage(bulletList[i].Damage);
+                //        bulletList.RemoveAt(i);
+                //    }
+                //}
+                if (bulletList[i].Hitbox.Intersects(bulletList[i].Target.Hitbox))
                 {
-                    if (bulletList[i].Hitbox.Intersects(EnemyManager.EnemyList[j].Hitbox))
+                    int targetIndex = EnemyManager.EnemyList.IndexOf(bulletList[i].Target);
+                    if (targetIndex != -1)
                     {
-                        EnemyManager.EnemyList[j].TakeDamage(bulletList[i].Damage);
+                        EnemyManager.EnemyList[targetIndex].TakeDamage(bulletList[i].Damage);
                         bulletList.RemoveAt(i);
                     }
+                    //for (int j = 0; j < EnemyManager.EnemyList.Count; j++)
+                    //{
+                    //    if (EnemyManager.EnemyList[j] == bulletList[i].Target)
+                    //    {
+                    //        EnemyManager.EnemyList[j].TakeDamage(bulletList[i].Damage);
+                    //    }
+                    //}
                 }
 
                 
@@ -60,7 +81,7 @@ namespace TowerDefence
             }
             for (int i = 0; i < bulletList.Count; i++)
             {
-                spritebatch.DrawString(Assets.fontArial, bulletList[i].ToString(), bulletTextPos + new Vector2(0, bulletTextPos.Y + i*15), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
+                spritebatch.DrawString(Assets.fontArial, i + bulletList[i].ToString() + " tI: " + EnemyManager.EnemyList.FindIndex(enemy => enemy == bulletList[i].Target), bulletTextPos + new Vector2(0, bulletTextPos.Y + i*15), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
             }
         }
 

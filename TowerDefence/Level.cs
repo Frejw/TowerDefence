@@ -24,18 +24,55 @@ namespace TowerDefence
 
         //public RenderTarget2D RenderTarget { get { return renderTarget; } }
 
+        //Vector2[] levelPoints =
+        //{
+        //    new Vector2(100, -10),
+        //    new Vector2(100, 0),
+        //    new Vector2(100, 300),
+        //    new Vector2(800,300),
+        //    new Vector2(800,500),
+        //    new Vector2(450, 500),
+        //    new Vector2(450, 700),
+        //    new Vector2(1000, 700),
+        //    new Vector2(1000, 0),
+        //    new Vector2(1000, -10)
+        //};
+
         Vector2[] levelPoints =
         {
-            new Vector2(100, -10),
+            new Vector2(100, -100),
             new Vector2(100, 0),
+            new Vector2(100, 100),
+            new Vector2(100, 200),
             new Vector2(100, 300),
-            new Vector2(800,300),
-            new Vector2(800,500),
-            new Vector2(450, 500),
-            new Vector2(450, 700),
+            new Vector2(200, 300),
+            new Vector2(300, 300),
+            new Vector2(400, 300),
+            new Vector2(500, 300),
+            new Vector2(600, 300),
+            new Vector2(700, 300),
+            new Vector2(800, 300),
+            new Vector2(800, 400),
+            new Vector2(800, 500),
+            new Vector2(700, 500),
+            new Vector2(600, 500),
+            new Vector2(500, 500),
+            new Vector2(400, 500),
+            new Vector2(400, 600),
+            new Vector2(400, 700),
+            new Vector2(500, 700),
+            new Vector2(600, 700),
+            new Vector2(700, 700),
+            new Vector2(800, 700),
+            new Vector2(900, 700),
             new Vector2(1000, 700),
-            new Vector2(1000, 0),
-            new Vector2(1000, -10)
+            new Vector2(1000, 600),
+            new Vector2(1000, 500),
+            new Vector2(1000, 400),
+            new Vector2(1000, 300),
+            new Vector2(1000, 200),
+            new Vector2(1000, 100),
+            new Vector2(1000, 0)
         };
 
         public Level(SpriteBatch spriteBatch, GraphicsDevice graphics)
@@ -44,7 +81,7 @@ namespace TowerDefence
             this.graphics = graphics;
             renderTarget = Assets.renderTarget;
 
-            float pathTension = 0f;
+            float pathTension = 0.5f;
             enemyPath = new CatmullRomPath(graphics, pathTension);
 
             enemyPath.Clear();
@@ -107,7 +144,7 @@ namespace TowerDefence
             enemyPath.DrawFillSetup(graphics, 2, 1, 256);
             enemyPath.DrawFill(graphics, Assets.redTex);
             //draw path points
-            //enemyPath.DrawPoints(spriteBatch, Color.Black, 6);
+            enemyPath.DrawPoints(spriteBatch, Color.Black, 6);
             //graphics.SetRenderTarget(null);
         }
 

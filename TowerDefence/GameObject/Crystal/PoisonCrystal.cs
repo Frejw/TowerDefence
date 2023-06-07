@@ -16,6 +16,9 @@ namespace TowerDefence
         int poisonDuration;
         static Color color = Color.LimeGreen;
 
+        static int cost = 100;
+
+        public static int Cost { get { return cost; } }
         public static Color Color { get { return color; } }
 
         public PoisonCrystal()
@@ -23,6 +26,7 @@ namespace TowerDefence
             texture = Assets.T1Crystal;
             hitbox = new Rectangle(300, 100, 30, 30);
             center = new Point(hitbox.X, hitbox.Y);
+            cost = 100;
             rangeRadius = 100;
             range = new CircleF(center, rangeRadius);
             fireRate = 2;

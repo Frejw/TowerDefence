@@ -12,7 +12,7 @@ namespace TowerDefence
     internal class Bullet : GameObject
     {
         Vector2 direction;
-        float velocity = 3f;
+        float velocity = 4f;
         float damage;
         private Point position;
         Rectangle hitbox = new Rectangle();
@@ -25,7 +25,7 @@ namespace TowerDefence
 
         public Bullet(float x, float y, Enemy target, float damage)
         {
-            hitbox = new Rectangle((int)x,(int)y,5,5);
+            hitbox = new Rectangle((int)x,(int)y,8,8);
             position = new Point(hitbox.X, hitbox.Y);
             this.target = target;
             this.damage = damage;
@@ -45,7 +45,7 @@ namespace TowerDefence
         {
             spriteBatch.Draw(Assets.redTex, hitbox, Color.White);
             spriteBatch.DrawPoint(position.ToVector2(), Color.LimeGreen);
-            spriteBatch.DrawLine(new Vector2(hitbox.X, hitbox.Y), new Vector2(hitbox.X + direction.X * 5, hitbox.Y + direction.Y * 20), Color.LimeGreen, 1f);
+            spriteBatch.DrawLine(new Vector2(hitbox.X, hitbox.Y), new Vector2(hitbox.X + direction.X * 5, hitbox.Y + direction.Y * 30), Color.LimeGreen, 2f);
         }
     }
 }

@@ -78,6 +78,17 @@ namespace TowerDefence
             //};
             //panelGrid.Widgets.Add(playerMoney);
 
+            var nextWave = new TextButton();
+            nextWave.GridColumn = 1;
+            nextWave.GridRow = 8;
+            nextWave.Text = "Next Wave";
+            panelGrid.Widgets.Add(nextWave);
+
+            nextWave.TouchDown += (s, a) =>
+            {
+                EnemyManager.WaveTimer = EnemyManager.TimeBetweenWaves;
+            };
+
             var crystalPicker = new ComboBox
             {
                 GridColumn = 1,
@@ -96,10 +107,18 @@ namespace TowerDefence
 
             crystalCreateButton.TouchDown += (s, a) =>
             {
+                //if (Player.Money > crystalPicker.SelectedItem.)
+                //{
+
+                //}
                 switch (crystalPicker.SelectedItem.Text)
                 {
                     case "Poison":
-                        CrystalManager.CreateCrystal(typeof(PoisonCrystal));
+                        if (Player.Money >= PoisonCrystal.Cost)
+                        {
+                            CrystalManager.CreateCrystal(typeof(PoisonCrystal));
+                            Player.Money -= PoisonCrystal.Cost;
+                        }
                         break;
 
                     default:
