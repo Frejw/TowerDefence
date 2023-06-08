@@ -40,7 +40,7 @@ namespace TowerDefence
 
         public ParticleEmitter(emitterType currentEmitterType)
         {
-            density = 99;
+            density = 200;
             position = new Vector2(200,200);
             this.currentEmitterType = currentEmitterType;
 

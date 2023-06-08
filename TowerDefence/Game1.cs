@@ -8,9 +8,7 @@ namespace TowerDefence
 {
     public class Game1 : Game
     {
-        //create a "gamewindow" that is as big as the "game" screen, excluding UI, then render UI outside of that screen to fix draw order issues
-        //path points will need to be changed
-        //limit placement of things to only be on gamescreen
+        //create a "gamewindow" that is as big as the "game" screen, excluding UI, then render UI outside of that screen
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -18,10 +16,6 @@ namespace TowerDefence
         public gameplayManager gameplayManager;
 
         Controls menuControls;
-
-        //static Rectangle viewport;
-
-        //public static Rectangle Viewport { get { return viewport; } }
         
         public static gameState currentGameState;
 
@@ -98,7 +92,7 @@ namespace TowerDefence
 
 
                 case gameState.EndScreen:
-
+                    EndScreen.Update();
                     break;
             }
 
@@ -107,7 +101,7 @@ namespace TowerDefence
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(SpriteSortMode.BackToFront);
 
             switch (currentGameState)
@@ -128,7 +122,7 @@ namespace TowerDefence
 
 
                 case gameState.EndScreen:
-
+                    EndScreen.Draw(spriteBatch);
                     break;
             }
 

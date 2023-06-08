@@ -77,59 +77,6 @@ namespace TowerDefence
 
             }
 
-            //if (enemyList.Count == 0)
-            //{
-            //    waveTimer += (float)gameTime.TotalGameTime.TotalSeconds;
-            //    spawnTimer += (float)gameTime.TotalGameTime.TotalSeconds;
-
-            //    if (waveTimer >= timeBetweenWaves)
-            //    {
-            //        StartWave();
-            //        waveTimer = 0f;
-            //    }
-            //}
-
-
-            //for (int i = 0; i < enemyList.Count; i++)
-            //{
-            //    enemyList[i].Update(gameTime);
-
-            //    enemyList[i].CurveCurPos += enemyList[i].Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-
-
-            //    if (enemyList[i].Health <= 0)
-            //    {
-            //        Player.Money += enemyList[i].KillValue;
-            //        enemyList.RemoveAt(i);
-            //    }
-
-            //    if (enemyList[i].CurveCurPos >= 1)
-            //    {
-            //        Player.Health -= enemyList[i].Damage;
-            //        enemyList.RemoveAt(i);
-            //    }
-            //}
-
-            //foreach (Enemy enemy in enemyList)
-            //{
-            //    enemy.Update(gameTime);
-
-            //    enemy.CurveCurPos += enemy.Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            //    if (enemy.Health <= 0)
-            //    {
-            //        Player.Money += enemy.KillValue;
-            //        enemyList.Remove(enemy);
-            //    }
-
-            //    if (enemy.CurveCurPos >= 1)
-            //    {
-            //        Player.Health -= enemy.Damage;
-            //        enemyList.Remove(enemy);
-            //    }
-            //}
-
             for (int i = enemyList.Count - 1; i >= 0; i--)
             {
                 Enemy enemy = enemyList[i];
@@ -154,16 +101,11 @@ namespace TowerDefence
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            //foreach (Enemy enemy in enemyList)
-            //{
-            //    enemy.Draw(spriteBatch);
-            //}
-
-            spriteBatch.DrawString(Assets.fontArial, "waveIndex: " + WaveIndex, new Vector2(1300, 60), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial, "previousWaveIndex: " + previousWaveIndex, new Vector2(1300, 75), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial,"wave timer: " + waveTimer , new Vector2(1300, 90), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial, "spawnTimer: " + spawnTimer, new Vector2(1300, 105), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial, "Spawned enemies: " + spawnedEnemies.Count, new Vector2(1300, 120), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, "waveIndex: " + WaveIndex, new Vector2(1300, 60), Color.LightBlue);
+            spriteBatch.DrawString(Assets.fontArial, "Wave Nr: " + previousWaveIndex, new Vector2(1300, 75), Color.LightBlue);
+            spriteBatch.DrawString(Assets.fontArial,"Next wave in: " + (float)Math.Round((timeBetweenWaves - waveTimer)/1000, 2) + "s" , new Vector2(1300, 90), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, "spawnTimer: " + spawnTimer, new Vector2(1300, 105), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, "Spawned enemies: " + spawnedEnemies.Count, new Vector2(1300, 120), Color.LightBlue);
             
             for (int i = 0; i < enemyList.Count; i++)
             {
@@ -173,7 +115,7 @@ namespace TowerDefence
                 //spriteBatch.Draw(Assets.blackTex, new Rectangle(100, 100, 50, 10), Color.White);
                 //spriteBatch.Draw(Assets.greenTex, new Rectangle(100, 100, (int)healthBarWidth, 10), null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0.3f);
 
-                spriteBatch.DrawString(Assets.fontArial, i + enemyList[i].ToString(), new Vector2(1300, 200 + i * 15), Color.LightBlue);
+                //spriteBatch.DrawString(Assets.fontArial, i + enemyList[i].ToString(), new Vector2(1300, 200 + i * 15), Color.LightBlue);
             }
         }
 
@@ -208,18 +150,5 @@ namespace TowerDefence
             }
         }
 
-        //private static void StartWave()
-        //{
-        //    waveIndex++;
-
-        //    int i = 0;
-        //    if (spawnTimer >= timeBetweenSpawns && i < enemiesPerWave)
-        //    {
-        //        waveIndex++;
-        //        CreateEnemy(typeof(NormalEnemy));
-        //        spawnTimer = 0f;
-        //        i++;
-        //    }
-        //}
     }
 }

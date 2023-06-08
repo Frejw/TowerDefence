@@ -26,36 +26,12 @@ namespace TowerDefence
             {
                 tower.Update(gameTime);
 
-
-
-
-
-
-
-
                 if (!tower.Placed)
                 {
-                    //probably suboptimal way of setting the offset
                     Vector2 mouseOffset = new Vector2(tower.Hitbox.Width / 2, tower.Hitbox.Height / 2);
                     tower.HitboxPosition = Player.MousePosition - mouseOffset;
                 }
             }
-
-            //if (HasUnPlacedTower)
-            //{
-            //    if (KeyMouseReader.KeyPressed(Keys.D2))
-            //    {
-            //        foreach (Tower tower in towerList.Where(tower => !tower.Placed))
-            //        {
-                        
-            //            if (Tower.CanPlace(tower))
-            //            {
-            //                tower.Placed = true;
-            //                gameplayManager.level1.DrawRenderTarget(Assets.normalTowerTex, tower.HitboxPosition);
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         public static void Draw(SpriteBatch spriteBatch)

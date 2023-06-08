@@ -38,6 +38,7 @@ namespace TowerDefence
             gravelRoadTex2 = content.Load<Texture2D>("gravel2");
             T1Crystal = content.Load<Texture2D>("Crystals/C1-test");
             normalEnemyTex = content.Load<Texture2D>("Enemy/normalEnemy");
+            fastEnemyTex = content.Load<Texture2D>("Enemy/fastEnemy");
 
             redTex = new Texture2D(graphics, 1, 1, false, SurfaceFormat.Color);
             redTex.SetData<Color>(new Color[] { Color.Red });

@@ -21,7 +21,7 @@ namespace TowerDefence
             {
                 Text = "Play",
                 Size = new Vector2(200, 50),
-                Location = new Vector2(500, 200),
+                Location = new Vector2(650, 200),
                 BackgroundColor = Color.DarkBlue
             };
 
@@ -32,7 +32,7 @@ namespace TowerDefence
             {
                 Text = "Quit",
                 Size = new Vector2(200, 50),
-                Location = new Vector2(500, 270),
+                Location = new Vector2(650, 270),
                 BackgroundColor = Color.DarkBlue
             };
 

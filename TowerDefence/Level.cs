@@ -22,7 +22,6 @@ namespace TowerDefence
         
         public CatmullRomPath EnemyPath { get { return enemyPath; } }
 
-        //public RenderTarget2D RenderTarget { get { return renderTarget; } }
 
         //Vector2[] levelPoints =
         //{
@@ -141,10 +140,10 @@ namespace TowerDefence
             enemyPath.DrawFillSetup(graphics, 30, 50, 75);
             enemyPath.DrawFill(graphics, Assets.asphaltRoadTex1);
             //draw path
-            enemyPath.DrawFillSetup(graphics, 2, 1, 256);
-            enemyPath.DrawFill(graphics, Assets.redTex);
+            //enemyPath.DrawFillSetup(graphics, 2, 1, 256);
+            //enemyPath.DrawFill(graphics, Assets.redTex);
             //draw path points
-            enemyPath.DrawPoints(spriteBatch, Color.Black, 6);
+            //enemyPath.DrawPoints(spriteBatch, Color.Black, 6);
             //graphics.SetRenderTarget(null);
         }
 

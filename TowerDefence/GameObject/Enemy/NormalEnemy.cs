@@ -12,34 +12,20 @@ namespace TowerDefence
 {
     internal class NormalEnemy : Enemy
     {
-        //float curveCurPos = 0;
-        //Vector2 position;
-
-        //public float CurveCurPos { get { return curveCurPos; } }
-
         public NormalEnemy()
         {
-            texture = Assets.redTex;
-            hitbox = new Rectangle(0,0,30,30);
-            speed = 0.01f;
+            texture = Assets.normalEnemyTex;
+            hitbox = new Rectangle(0,0,40,40);
+            speed = 0.015f;
             armor = 0;
             maxHealth = 20;
             health = maxHealth;
             killValue = 20;
-            damage = 10;
+            damage = 15;
         }
 
         public override void Update(GameTime gameTime)
         {
-            //curveCurPos += speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            //if (curveCurPos > 1.0f)
-            //{
-            //    //this is for code when you get to the end of the path
-            //    Player.Health -= damage;
-            //    curveCurPos= 0.0f;
-            //}
-
             position = gameplayManager.level1.EnemyPath.EvaluateAt(curveCurPos);
 
             hitbox.X = (int)position.X - hitbox.Width/2;
@@ -53,10 +39,10 @@ namespace TowerDefence
             spriteBatch.Draw(Assets.redTex, new Rectangle(hitbox.X, hitbox.Y - 10, (int)healthBarFillWidth, 5), Color.White);
 
             spriteBatch.Draw(texture, hitbox, Color.White);
-            spriteBatch.DrawString(Assets.fontArial, health.ToString(), new Vector2(hitbox.X + 40, hitbox.Y), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial, position.ToString(), new Vector2(hitbox.X + 40, hitbox.Y + 15), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial, hitbox.X.ToString() + hitbox.Y.ToString(), new Vector2(hitbox.X + 40 + 30, hitbox.Y), Color.LightBlue);
-            spriteBatch.DrawString(Assets.fontArial, curveCurPos.ToString(), new Vector2(hitbox.X + 40 + 30, hitbox.Y + 30), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, health.ToString(), new Vector2(hitbox.X + 40, hitbox.Y), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, position.ToString(), new Vector2(hitbox.X + 40, hitbox.Y + 15), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, hitbox.X.ToString() + hitbox.Y.ToString(), new Vector2(hitbox.X + 40 + 30, hitbox.Y), Color.LightBlue);
+            //spriteBatch.DrawString(Assets.fontArial, curveCurPos.ToString(), new Vector2(hitbox.X + 40 + 30, hitbox.Y + 30), Color.LightBlue);
         }
 
         public override void TakeDamage(float damage)

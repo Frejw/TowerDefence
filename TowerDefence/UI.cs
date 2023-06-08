@@ -26,7 +26,7 @@ namespace TowerDefence
 
             var grid = new Grid
             {
-                ShowGridLines = true,
+                ShowGridLines = false,
                 RowSpacing = 8,
                 ColumnSpacing = 8
             };
@@ -46,7 +46,7 @@ namespace TowerDefence
 
             var panelGrid = new Grid
             {
-                ShowGridLines= true,
+                ShowGridLines= false,
                 RowSpacing = 8,
                 ColumnSpacing = 8
             };
@@ -81,7 +81,7 @@ namespace TowerDefence
             var nextWave = new TextButton();
             nextWave.GridColumn = 1;
             nextWave.GridRow = 8;
-            nextWave.Text = "Next Wave";
+            nextWave.Text = "Start Wave";
             panelGrid.Widgets.Add(nextWave);
 
             nextWave.TouchDown += (s, a) =>
@@ -95,7 +95,7 @@ namespace TowerDefence
                 GridRow = 9
             };
             //these items should be created using a list of crystal types, but that doesn't exist yet
-            crystalPicker.Items.Add(new ListItem("Poison", PoisonCrystal.color));
+            crystalPicker.Items.Add(new ListItem("Normal", PoisonCrystal.color));
             crystalPicker.Items.Add(new ListItem("Type2", Color.Aqua));
             crystalPicker.SelectedItem = crystalPicker.Items[0];
             panelGrid.Widgets.Add(crystalPicker);
@@ -113,13 +113,17 @@ namespace TowerDefence
                 //}
                 switch (crystalPicker.SelectedItem.Text)
                 {
-                    case "Poison":
+                    case "Normal":
                         if (Player.Money >= PoisonCrystal.Cost)
                         {
                             CrystalManager.CreateCrystal(typeof(PoisonCrystal));
                             Player.Money -= PoisonCrystal.Cost;
                         }
                         break;
+                    case "Type2":
+                        {
+                            throw new NotImplementedException();
+                        }
 
                     default:
                         throw new NotImplementedException();
@@ -135,7 +139,7 @@ namespace TowerDefence
             tower1Button.GridColumn = 1;
             tower1Button.GridRow = 10;
             tower1Button.Text = "Normal Tower";
-            tower1Button.Width = 50;
+            tower1Button.Width = 70;
             tower1Button.Height = 50;
             tower1Button.Toggleable = false;
             panelGrid.Widgets.Add(tower1Button);
@@ -161,7 +165,7 @@ namespace TowerDefence
             tower2Button.GridColumn = 2;
             tower2Button.GridRow = 10;
             tower2Button.Text = "AoE Tower";
-            tower2Button.Width = 50;
+            tower2Button.Width = 70;
             tower2Button.Height = 50;
             panelGrid.Widgets.Add(tower2Button);
 

@@ -40,24 +40,8 @@ namespace TowerDefence
         {
             //move range to hitbox
             range.Position = HitboxPosition;
-
-            ////shoot if crystal is in a tower and enemy in rnage
-            //if (inTower)
-            //{
-            //    foreach (Enemy enemy in EnemyManager.EnemyList)
-            //    {
-            //        if (range.Intersects(rectangle: enemy.Hitbox))
-            //        {
-            //            Shoot();
-            //        }
-            //    }
-            //}
+            
         }
-
-        //public override void Shoot()
-        //{
-        //    BulletManager.CreateBullet(HitboxPosition.X, HitboxPosition.Y);
-        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {

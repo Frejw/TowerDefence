@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace TowerDefence
 {
-    internal static class MainMenu
+    internal static class EndScreen
     {
-        
         public static void Update()
         {
             if (KeyMouseReader.KeyPressed(Keys.Space))
             {
-                Game1.currentGameState = Game1.gameState.Playing;
+                System.Environment.Exit(0);
             }
         }
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.DrawString(Assets.fontArial, "Main Menu", new Vector2(0, 0), Color.Black);
+            spriteBatch.DrawString(Assets.fontArial, "Press Space to exit", new Vector2(700, 500), Color.White);
+            //spriteBatch.Draw(Assets.endScreen, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
         }
     }
 }

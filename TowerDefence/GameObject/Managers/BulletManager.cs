@@ -102,10 +102,10 @@ namespace TowerDefence
             {
                 bullet.Draw(spritebatch);
             }
-            for (int i = 0; i < bulletList.Count; i++)
-            {
-                spritebatch.DrawString(Assets.fontArial, i + bulletList[i].ToString() + " tI: " + EnemyManager.EnemyList.FindIndex(enemy => enemy == bulletList[i].Target), bulletTextPos + new Vector2(0, bulletTextPos.Y + i*15), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
-            }
+            //for (int i = 0; i < bulletList.Count; i++)
+            //{
+            //    spritebatch.DrawString(Assets.fontArial, i + bulletList[i].ToString() + " tI: " + EnemyManager.EnemyList.FindIndex(enemy => enemy == bulletList[i].Target), bulletTextPos + new Vector2(0, bulletTextPos.Y + i*15), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
+            //}
         }
 
         public static void CreateBullet(float x, float y, Enemy target, float damage, Color color)

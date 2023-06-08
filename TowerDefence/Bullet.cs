@@ -37,7 +37,6 @@ namespace TowerDefence
             if (target != null)
             {
                 direction = new Vector2(target.Hitbox.Center.X - hitbox.Center.X, target.Hitbox.Center.Y - hitbox.Center.Y);
-                //direction = new Vector2(target.Hitbox.Location.X - hitbox.Location.X, target.Hitbox.Location.Y - hitbox.Location.Y);
                 direction.Normalize();
                 hitbox.X += (int)(direction.X * velocity);
                 hitbox.Y += (int)(direction.Y * velocity);
@@ -47,8 +46,8 @@ namespace TowerDefence
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Assets.whiteTex, hitbox, bulletColor);
-            spriteBatch.DrawPoint(position.ToVector2(), Color.LimeGreen);
-            spriteBatch.DrawLine(new Vector2(hitbox.X, hitbox.Y), new Vector2(hitbox.X + direction.X * 5, hitbox.Y + direction.Y * 30), Color.HotPink, 2f);
+            //spriteBatch.DrawPoint(position.ToVector2(), Color.LimeGreen);
+            //spriteBatch.DrawLine(new Vector2(hitbox.X, hitbox.Y), new Vector2(hitbox.X + direction.X * 5, hitbox.Y + direction.Y * 30), Color.HotPink, 2f);
         }
     }
 }

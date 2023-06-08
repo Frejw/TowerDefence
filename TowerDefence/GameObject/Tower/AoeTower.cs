@@ -15,11 +15,11 @@ namespace TowerDefence
         {
             texture = Assets.AoETowerTex;
             shootEmitter = new ParticleEmitter(ParticleEmitter.emitterType.OnCall);
-            shootEmitter.ParticleAge = 0.5f;
-            shootEmitter.ParticleVelocity = 200;
+            shootEmitter.ParticleAge = 0.3f;
+            shootEmitter.ParticleVelocity = 400;
             gameplayManager.ParticleEmitterList.Add(shootEmitter);
             cost = 250;
-            rangeMultiplier = 0.5f;
+            rangeMultiplier = 0.75f;
         }
 
         public override void Update(GameTime gameTime)
@@ -42,11 +42,11 @@ namespace TowerDefence
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, hitbox, null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0.3f);
-            if (currentCrystal != null)
-            {
-                spriteBatch.DrawString(Assets.fontArial, currentCrystal.ToString(), HitboxPosition + new Vector2(50, 0), Color.Red, 0f, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
-                spriteBatch.DrawString(Assets.fontArial, shootTimer.ToString(), HitboxPosition + new Vector2(50, 15), Color.Red, 0f, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
-            }
+            //if (currentCrystal != null)
+            //{
+            //    spriteBatch.DrawString(Assets.fontArial, currentCrystal.ToString(), HitboxPosition + new Vector2(50, 0), Color.Red, 0f, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
+            //    spriteBatch.DrawString(Assets.fontArial, shootTimer.ToString(), HitboxPosition + new Vector2(50, 15), Color.Red, 0f, Vector2.Zero, 1, SpriteEffects.None, 0.3f);
+            //}
         }
 
         public override void Shoot()

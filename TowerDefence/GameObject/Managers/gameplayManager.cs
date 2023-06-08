@@ -19,18 +19,12 @@ namespace TowerDefence
 
         private static List<ParticleEmitter> particleEmitterList;
 
-        //UI gameUI;
-
         public static Desktop desktop;
-
-        #region fortesting
 
         public static Level level1;
         
         internal static List<ParticleEmitter> ParticleEmitterList { get => particleEmitterList; set => particleEmitterList = value; }
 
-        //NormalTower tower1;
-        #endregion
 
         public gameplayManager(SpriteBatch spriteBatch, GraphicsDevice graphics) 
         {
@@ -41,23 +35,10 @@ namespace TowerDefence
 
             ParticleEmitterList = new List<ParticleEmitter>();
 
-            //gameUI= new UI();
-
             desktop = new Desktop();
             desktop.Root = UI.CreateGrid(graphics);
             
-            #region fortesting
             level1 = new Level(spriteBatch, graphics);
-
-            //ParticleEmitter emitter1 = new ParticleEmitter(ParticleEmitter.emitterType.Pulse);
-            //ParticleEmitterList.Add(emitter1);
-
-            //Enemy enemy1 = new NormalEnemy();
-            //EnemyManager.CreateEnemy(typeof(NormalEnemy));
-
-            //tower1 = new NormalTower();
-            //TowerManager.CreateTower(typeof(NormalTower));
-            #endregion
 
         }
 
@@ -87,7 +68,6 @@ namespace TowerDefence
             //0.3f = non rendertarget tower
             //0.2f = crystal
 
-            //levelManager.Draw();
             if (level1 != null)
             {
                 level1.Draw();
