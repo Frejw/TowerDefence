@@ -20,6 +20,7 @@ namespace TowerDefence
             gameplayManager.ParticleEmitterList.Add(shootEmitter);
             cost = 250;
             rangeMultiplier = 0.75f;
+            damageMultiplier = 0.5f;
         }
 
         public override void Update(GameTime gameTime)
@@ -55,7 +56,7 @@ namespace TowerDefence
             {
                 if (enemy.Hitbox.Intersects(currentCrystal.RangeCircle))
                 {
-                    enemy.TakeDamage(currentCrystal.Damage);
+                    enemy.TakeDamage(currentCrystal.Damage * damageMultiplier);
                 }
             }
         }

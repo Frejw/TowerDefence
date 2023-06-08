@@ -14,6 +14,7 @@ namespace TowerDefence
             texture = Assets.normalTowerTex;
             cost = 150;
             rangeMultiplier = 1;
+            damageMultiplier = 1;
         }
 
         public override void Update(GameTime gameTime)
@@ -60,7 +61,7 @@ namespace TowerDefence
 
         public override void Shoot()
         {
-            BulletManager.CreateBullet(HitboxPosition.X + hitbox.Width/2, HitboxPosition.Y + hitbox.Height/2, target, currentCrystal.Damage, currentCrystal.CrystalColor);
+            BulletManager.CreateBullet(HitboxPosition.X + hitbox.Width/2, HitboxPosition.Y + hitbox.Height/2, target, currentCrystal.Damage * damageMultiplier, currentCrystal.CrystalColor);
         }
     }
 }

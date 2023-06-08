@@ -18,6 +18,7 @@ namespace TowerDefence
         protected float shootTimer;
         int towerWidth = 40;
         int towerHeight = 40;
+        protected float damageMultiplier;
 
         protected float rangeMultiplier;
         protected int cost;
