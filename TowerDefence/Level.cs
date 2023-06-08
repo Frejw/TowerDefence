@@ -103,7 +103,6 @@ namespace TowerDefence
 
         //Draws a texture to a possiton on the rendertarget if a texture is passed
         //Re-draws all towers in towerlist and the enemypath to rendertarget every time something is added to rendertarget
-        //Probably a really bad idea doing it this way, should rewrite
         public void DrawRenderTarget(Texture2D texture, Vector2? position)
         {
             graphics.SetRenderTarget(renderTarget);

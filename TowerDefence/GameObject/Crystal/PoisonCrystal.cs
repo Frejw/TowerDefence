@@ -12,8 +12,8 @@ namespace TowerDefence
 {
     internal class PoisonCrystal : Crystal
     {
-        int poisonDamage;
-        int poisonDuration;
+        //int poisonDamage;
+        //int poisonDuration;
         public static Color color = Color.LimeGreen;
 
         static int cost = 100;
@@ -24,7 +24,7 @@ namespace TowerDefence
         public PoisonCrystal()
         {
             texture = Assets.T1Crystal;
-            hitbox = new Rectangle(300, 100, 30, 30);
+            hitbox = new Rectangle(1350, 400, 30, 30);
             //center = new Point((int)HitboxPosition.X , (int)HitboxPosition.Y);
             cost = 100;
             defaultRangeRadius = 150;
